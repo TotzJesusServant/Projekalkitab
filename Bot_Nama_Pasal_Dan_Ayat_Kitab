@@ -1,0 +1,83 @@
+'1. Read alkitb
+alkitab = file.ReadContents("C:\Users\Totz Tech\Downloads\alkitab-tb-plain.txt")
+i = 1
+nama_kitab_indonesia[i] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_indonesia.txt",i)
+TextWindow.WriteLine(nama_kitab_indonesia[i])
+While nama_kitab_indonesia[i] <> ""
+  i = i + 1
+  TextWindow.WriteLine(i)
+  nama_kitab_indonesia[i] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_indonesia.txt",i)  
+EndWhile
+
+'2. Read file nama-nama kitab dalam bahasa inggris
+j = 1
+nama_kitab_inggris[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_inggris_revise.txt",j)
+'TextWindow.WriteLine(nama_kitab_inggris[j])
+While nama_kitab_inggris[j] <> ""
+  j = j + 1
+  'TextWindow.WriteLine(j)
+  nama_kitab_inggris[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_inggris_revise.txt",j)  
+EndWhile
+'index = 0
+
+For k = 1 To j-1
+  temp_index = Text.GetIndexOf(alkitab,nama_kitab_inggris[k])
+  myText = Text.GetSubText(alkitab,temp_index+text.GetLength(nama_kitab_inggris[k]+" "),1)
+  If Text.GetCharacterCode(mytext) >= 48 And Text.GetCharacterCode(mytext) <= 57 then
+    index = temp_index
+  EndIf
+  TextWindow.WriteLine("Ini mytext diatas: " + myText)
+  'Program.Delay(5000)
+  
+  TextWindow.WriteLine("Ini nilai k: " + k)
+  TextWindow.WriteLine("Ini nama kitab: " + nama_kitab_inggris[k])
+  'Program.Delay(5000)
+  
+  While index <> 0
+    y = Text.GetSubText(alkitab,1,index -1)
+    x = x + y
+    
+    'Program.Delay(5000)
+    x = x + nama_kitab_indonesia[k]
+    'TextWindow.WriteLine(x)
+    'Program.Delay(1000)
+    alkitab = Text.GetSubTextToEnd(alkitab,index+Text.GetLength(nama_kitab_inggris[k]))
+    'wt = while 
+    temp_index = Text.GetIndexOf(alkitab,nama_kitab_inggris[k])
+    TextWindow.WriteLine("Ini k: " + k)
+    'TextWindow.WriteLine("Ini temp_index: " + temp_index)
+    If k = 1 Then
+      'Program.Delay(5000)
+    EndIf
+    If temp_index = 0 Then
+      index = 0
+      'Program.Delay(1000)
+      else
+  myText = Text.GetSubText(alkitab,temp_index+text.GetLength(nama_kitab_inggris[k]+" "),1)
+  If Text.GetCharacterCode(mytext) >= 48 And Text.GetCharacterCode(mytext) <= 57 then
+    TextWindow.writeline("Its a number")
+    'Program.Delay(1000)
+    index = temp_index
+  Else 
+    index = 0
+    EndIf
+    endif
+  TextWindow.WriteLine("Ini index: " + index +", ini num: " + num)
+  TextWindow.WriteLine("Ini myText dibawah: " + myText)
+  'Program.Delay(1000)
+  num = num + 1
+    
+    'TextWindow.WriteLine("Ini index: " + index)
+    'left_side_content_alkitab = Text.GetSubText(alkitab, 1, index - 1)
+    'right_side_content_alkitab = Text.GetSubTextToEnd(alkitab,index+Text.GetLength(nama_kitab_inggris[k]))
+    'unite_again =  left_side_content_alkitab + nama_kitab_indonesia[k] + right_side_content_alkitab
+    'alkitab = unite_again
+    'alkitab_inner = Text.GetSubTextToEnd(alkitab,index)
+    'index = Text.GetIndexOf(alkitab,nama_kitab_inggris[k])
+    'TextWindow.WriteLine("ini nama kitabnya: " + nama_kitab_inggris[k])
+  EndWhile
+  'x = x + alkitab
+  File.AppendContents("C:\Users\Totz Tech\Downloads\alkitab-tb-plain-ubah-nama-kitab.txt",x)
+EndFor
+  x = x + alkitab
+  File.WriteContents("C:\Users\Totz Tech\Downloads\alkitab-tb-plain-ubah-nama-kitab.txt",x)
