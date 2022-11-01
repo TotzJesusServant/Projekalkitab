@@ -1,0 +1,50 @@
+line_number1 = 1
+line_number2 = 1
+
+
+data1 = File.ReadLine("C:\Users\Totz Tech\Downloads\cari_kata_allah13.txt",line_number1)
+TextWindow.WriteLine(data1)
+While data1 <> ""
+  arraydata1[i] = data1
+  i = i + 1
+  line_number1 = line_number1 + 1
+  data1 = File.ReadLine("C:\Users\Totz Tech\Downloads\cari_kata_allah13.txt",line_number1)
+  'TextWindow.WriteLine("Thank you")
+EndWhile
+TextWindow.WriteLine(arraydata1)
+
+data2 = File.ReadLine("C:\Users\Totz Tech\Downloads\cari_kata_allah14.txt",line_number2)
+While data2 <> "" 
+  arraydata2[j] = data2
+  j = j + 1
+  line_number2 = line_number2 + 1
+  data2 = File.ReadLine("C:\Users\Totz Tech\Downloads\cari_kata_allah14.txt",line_number2)
+EndWhile
+TextWindow.WriteLine(arraydata2)
+Program.Delay(5000)
+
+For i = 1 To array.GetItemCount(arraydata1)
+  not_same = 0
+  'Program.Delay(1000)
+  For j = 1 To Array.GetItemCount(arraydata2)
+    'TextWindow.WriteLine(arraydata2[j])
+    'Program.Delay(1000)
+    If arraydata1[i] = arraydata2[j] Then
+      not_same = 1
+      TextWindow.WriteLine("not same")
+      Program.Delay(1000)
+    EndIf
+  EndFor
+  If not_same = 0 then
+    unionelements[1] = arraydata2[j]
+    TextWindow.WriteLine(unionelements)
+    'sameelement1[Array.GetItemCount(sameelement1)+1] = i
+    'sameelement2[Array.GetItemCount(sameelement2)+1] = j
+  EndIf
+  
+EndFor
+
+  
+  TextWindow.WriteLine("Ini isi array unionelements: " + unionelements)
+  
+  
