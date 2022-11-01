@@ -1,0 +1,186 @@
+kemunculan = 1
+alkitab = File.ReadContents("C:\Users\Totz Tech\Downloads\alkitab-tb-plain.txt")
+'TextWindow.Write(alkitab)
+
+'membaca file membuat array nama_kitab_inggris
+j = 1
+nama_kitab_indonesia[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_indonesia.txt",j)
+TextWindow.WriteLine(nama_kitab_indonesia[j])
+While nama_kitab_indonesia[j] <> ""
+  j = j + 1
+  TextWindow.WriteLine(j)
+  nama_kitab_indonesia[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_indonesia.txt",j)  
+EndWhile
+
+j = 1
+nama_kitab_inggris[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_inggris_revise.txt",j)
+TextWindow.WriteLine(nama_kitab_inggris[j])
+While nama_kitab_inggris[j] <> ""
+  j = j + 1
+  TextWindow.WriteLine(j)
+  nama_kitab_inggris[j] = File.ReadLine("C:\Users\Totz Tech\Documents\Bootstrap\nama_kitab_bhs_inggris_revise.txt",j)  
+EndWhile
+
+
+'getlength 
+
+
+pasal_awal = 1
+pasal_akhir = 2
+TextWindow.writeline("Di sini, setelah selesai tulis nama kitab")
+'Program.Delay(5000)
+For i = 1 To j
+  pasal_awal = 1
+  pasal_akhir = 2
+  TextWindow.WriteLine("Sudah masuk")
+  'ambil indeks pertama dan kedua
+  indeks_kitab_pertama = Text.GetIndexOf(alkitab,nama_kitab_inggris[i]+" "+1)
+  indeks_kitab_kedua = Text.GetIndexOf(alkitab,nama_kitab_inggris[i+1]+" "+1)
+  if i = 66 Then 
+    indeks_kitab_kedua = Text.GetLength(alkitab)
+  EndIf
+  
+  TextWindow.WriteLine("Ini nomor kitabnya: " + i)
+  TextWindow.WriteLine("Ini indeks kitab pertama: " + indeks_kitab_pertama)
+  'Program.Delay(5000)
+  TextWindow.WriteLine("Ini indeks kitab kedua: " + indeks_kitab_kedua)
+  data_per_kitab = text.GetSubText(alkitab, indeks_kitab_pertama, indeks_kitab_kedua - indeks_kitab_pertama)
+  
+  panjang_nama_kitab = Text.GetLength(nama_kitab_inggris[i])
+  TextWindow.WriteLine("Sudah masuk kedua")
+  
+  indeks_pasal_awal = 1
+  TextWindow.WriteLine("ini indeks_pasal_awal: " + indeks_pasal_awal)
+  TextWindow.WriteLine("ini nama kitabnya beserta pasalnya" + nama_kitab_inggris[i] + " " + pasal_awal)
+  'Program.Delay(5000)
+  indeks_pasal_akhir = Text.GetIndexOf(data_per_kitab,nama_kitab_inggris[i] + " " + pasal_akhir)
+  
+  'Jika pasal_akhir = 0 di awal. Seperti di kitab Obaja. Hanya 1 pasal saja
+  If indeks_pasal_akhir = 0 Then
+    indeks_pasal_akhir = Text.GetLength(data_per_kitab)
+  EndIf
+  
+    
+    
+    
+  'indeks_pasal_akhir dan indeks_pasal_awal selalu eksis karena di awal kitab
+  
+  While indeks_pasal_awal <> 0
+  data_per_pasal = Text.GetSubText(data_per_kitab,indeks_pasal_awal,indeks_pasal_akhir - indeks_pasal_awal)
+    'While indeks_pasal_akhir <> 0
+    TextWindow.WriteLine("Bersiap masuk sub cari")
+    'Program.Delay(5000)
+    cari()
+    pasal_akhir = pasal_akhir + 1
+    pasal_awal = pasal_awal + 1
+    TextWindow.WriteLine("Ini pasal_akhir dan pasal_awal ditambahkan di while atas: " + pasal_awal+":"+"yoyo")
+    'Program.Delay(1000)
+    indeks_pasal_awal = Text.GetIndexOf(data_per_kitab,nama_kitab_inggris[i] + " " + pasal_awal)
+    TextWindow.WriteLine("Ini alkitab dan pasal di dalam while: " + nama_kitab_inggris[i]+ " " +pasal_awal)
+    TextWindow.WriteLine("ini indeks_pasal_awal di while atas: " + indeks_pasal_awal)
+    
+    indeks_pasal_akhir = Text.GetIndexOf(data_per_kitab,nama_kitab_inggris[i] + " " + pasal_akhir)
+    TextWindow.WriteLine("ini pasal awal dan pasal akhir: " + pasal_awal + ", " + pasal_akhir)
+    'Program.Delay(3000)
+    If pasal_awal > 22 Then
+      'Program.Delay(4000)
+    EndIf
+    
+    If indeks_pasal_akhir = 0 then
+      TextWindow.WriteLine("Hit indeks_pasal_akhir")
+      'TextWindow.Read()
+      indeks_pasal_akhir = Text.GetLength(data_per_kitab)
+    endif
+    
+    'data_per_pasal = Text.GetSubText(data_per_kitab,indeks_pasal_awal,indeks_pasal_akhir - indeks_pasal_awal)
+    TextWindow.writeline("Ini data_per_pasal: " + data_per_pasal)
+    If pasal_awal > 22 Then
+      'Program.Delay(3000)
+    EndIf
+    
+    TextWindow.WriteLine("Ini indeks_pasal_akhir: " + indeks_pasal_akhir)
+    TextWindow.WriteLine("Loop while atas")
+    'Program.Delay(5000)
+      'EndWhile
+      endwhile
+      
+      EndFor
+      
+      
+      
+      
+
+sub cari
+  'cari tanda titik dua
+  TextWindow.WriteLine("Masuk sub")
+  'Program.Delay(1000)
+  ayat_awal = 1
+  ayat_akhir = 2
+  TextWindow.WriteLine("Ini ayat_awal : " + ayat_awal)
+  indeks_ayat_awal = Text.GetIndexOf(data_per_pasal,":"+ayat_awal+" " )
+  indeks_ayat_akhir = Text.GetIndexOf(data_per_pasal,":"+ayat_akhir+ " ")
+  TextWindow.WriteLine("indeks_ayat_akhir: " + indeks_ayat_akhir)
+  'Program.Delay(5000)
+    
+    While indeks_ayat_awal <> 0
+      'TextWindow.WriteLine("Masuk ke first inner while")
+      'Program.Delay(1000) 
+      data_per_ayat = Text.GetSubText(data_per_pasal,indeks_ayat_awal,indeks_ayat_akhir - indeks_ayat_awal)
+      If pasal_awal = 21 Then
+      TextWindow.WriteLine("Ini data_per_ayat: " + data_per_ayat)
+      
+      TextWindow.WriteLine("Diatas data per ayat: ")
+      'Program.Delay(1000)
+      EndIf
+      indeks_all = Text.GetIndexOf(data_per_ayat," ALLAH")
+      
+      While indeks_all <> 0
+        'get two times space on the left of the object
+        startf = indeks_all
+        spacetime = 0
+        takedata = Text.GetSubText(data_per_ayat,startf,1)
+        While text.GetCharacterCode(takedata) <> 10
+          takedata = Text.GetSubText(data_per_ayat,startf,1)
+          startf = startf + 1
+          If text.GetCharacterCode(takedata) <> 10 Then
+            spacetime = spacetime + 1
+          EndIf
+        EndWhile
+        If spacetime >=20 Then
+        penampakan_kiri_kanan_objek = Text.GetSubText(data_per_ayat,indeks_all-10,25)
+      Else
+        penampakan_kiri_kanan_objek = Text.GetSubText(data_per_ayat,indeks_all-10,spacetime + 5)
+      EndIf
+      
+        data_content = kemunculan+","+penampakan_kiri_kanan_objek+","+ nama_kitab_indonesia[i]+" "+pasal_awal+":"+ayat_awal
+        TextWindow.WriteLine("Ini isi data_content: " + data_content)
+        'Program.Delay(1000)
+        File.WriteLine("C:\Users\Totz Tech\Downloads\analisa_allah\cari_kata_allah6.csv",kemunculan,data_content)
+        kemunculan = kemunculan + 1
+        data_per_ayat = Text.GetSubTextToEnd(data_per_ayat,indeks_all+1+Text.GetLength("Allah"))
+        TextWindow.WriteLine("data_per_ayat: " + data_per_ayat)
+        'Program.Delay(1000)
+        TextWindow.WriteLine("Putar While")
+        'Program.Delay(1000)
+        indeks_all = Text.GetIndexOf(data_per_ayat,"allah")
+        
+        
+        
+        EndWhile
+        ayat_awal = ayat_awal + 1
+        ayat_akhir = ayat_akhir + 1
+        
+        indeks_ayat_awal = Text.GetIndexOf(data_per_pasal,":"+ayat_awal+" " )
+        indeks_ayat_akhir = Text.GetIndexOf(data_per_pasal,":"+ayat_akhir+" ")
+        
+        If indeks_ayat_akhir  = 0 Then
+          indeks_ayat_akhir = Text.GetLength(data_per_pasal)
+        EndIf
+        
+          
+        EndWhile
+        
+        EndSub
+        
+      
+ 
